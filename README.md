@@ -1,3 +1,37 @@
+# nlw1-web
+
+Repo destinado para versão WEB do projeto em desenvolvimento da semana Next Level Week da [Rocketseat](https://rocketseat.com.br/)
+
+## typescript
+
+[Inciante](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup))
+
+```bash
+npx run react-create-app
+yarn add react-icons react-router-dom
+```
+
+- Por estarmos trabalhando com TS não podemos esquecer de instalar:
+
+```bash
+yarn add @types/react-router-dom
+```
+
+## Map
+
+- Para não termos dores de cabeça com o Google iremos usar um mapa de codigo aberto chamado [leaflet](https://leafletjs.com/). Mas para casos de usos mais complexos e que irão gerar dinheiro vale apena usar uma biblioteca mais confiavel.
+
+[react-leaflet](https://react-leaflet.js.org/)
+
+```bash
+yarn add leaflet react-leaflet
+yarn add @types/react-leaflet -D
+```
+
+Não esqueça de copiar o CSS da pagina para o projeto
+
+# --------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

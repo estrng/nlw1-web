@@ -1,16 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
+import Routes from "./routes"; // Importando as rotas
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>JOSE IVAN RIBEIRO DE OLIVEIRA</h1>
-      </header>
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;
