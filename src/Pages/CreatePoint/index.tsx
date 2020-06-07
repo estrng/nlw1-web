@@ -14,6 +14,8 @@ import api from "../../services/api";
 import externalApi from "../../services/externalApi";
 import { toast } from "react-toastify";
 
+import Dropzone from "../../components/DropZone";
+
 import "./styles.css";
 
 import logo from "../../assets/logo.svg";
@@ -51,6 +53,7 @@ const CreatePoint = () => {
   const [selectedUf, setSelectedUf] = useState("o");
   const [selectedCity, setSelectedCity] = useState("o");
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [selectedFile, setSelectedFile] = useState<File>();
 
   const [selectedPosition, setSelectedPosition] = useState<[number, number]>([
     0,
@@ -79,7 +82,7 @@ const CreatePoint = () => {
 
       setUfs(ufInitials);
     });
-  });
+  }, []);
 
   useEffect(() => {
     if (selectedUf === "0") {
@@ -134,16 +137,21 @@ const CreatePoint = () => {
     const cidade = selectedCity;
     const [latitude, longitude] = selectedPosition;
     const items = selectedItems;
-    const data = {
-      nome,
-      email,
-      whatsapp,
-      uf,
-      cidade,
-      latitude,
-      longitude,
-      items,
-    };
+
+    const data = new FormData();
+
+    data.append("nome", nome);
+    data.append("email", email);
+    data.append("whatsapp", whatsapp);
+    data.append("cidade", cidade);
+    data.append("uf", uf);
+    data.append("latitude", String(latitude));
+    data.append("longitude", String(longitude));
+    data.append("items", items.join(","));
+
+    if (selectedFile) {
+      data.append("image", selectedFile);
+    }
 
     await api.post("points", data);
 
@@ -169,8 +177,10 @@ const CreatePoint = () => {
           <FiHome size={36} />
         </Link>
       </header>
+
       <form onSubmit={handleSubmit}>
         <h1>Cadastre um ponto de coleta.</h1>
+        <Dropzone onFileUploaded={setSelectedFile} />
         <fieldset>
           <legend>
             <h2>Dados</h2>
