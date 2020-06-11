@@ -30,7 +30,7 @@ yarn add @types/react-leaflet -D
 
 Não esqueça de copiar o CSS da pagina para o projeto
 
-# --------------------------------------------------------------------------
+# ----------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
